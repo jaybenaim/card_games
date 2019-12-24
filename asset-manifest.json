@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/jaybenaim/card_games/static/css/main.23b232eb.chunk.css",
-    "main.js": "/jaybenaim/card_games/static/js/main.ca7a288b.chunk.js",
-    "main.js.map": "/jaybenaim/card_games/static/js/main.ca7a288b.chunk.js.map",
-    "runtime-main.js": "/jaybenaim/card_games/static/js/runtime-main.2e6a843e.js",
-    "runtime-main.js.map": "/jaybenaim/card_games/static/js/runtime-main.2e6a843e.js.map",
-    "static/js/2.8520b836.chunk.js": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js",
-    "static/js/2.8520b836.chunk.js.map": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js.map",
-    "index.html": "/jaybenaim/card_games/index.html",
-    "precache-manifest.350accd5847cff4afe0c6b59e53eba5d.js": "/jaybenaim/card_games/precache-manifest.350accd5847cff4afe0c6b59e53eba5d.js",
-    "service-worker.js": "/jaybenaim/card_games/service-worker.js",
-    "static/css/main.23b232eb.chunk.css.map": "/jaybenaim/card_games/static/css/main.23b232eb.chunk.css.map",
-    "static/js/2.8520b836.chunk.js.LICENSE": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js.LICENSE",
-    "static/media/p1Back.jpg": "/jaybenaim/card_games/static/media/p1Back.d4876dce.jpg"
+    "main.css": "./static/css/main.23b232eb.chunk.css",
+    "main.js": "./static/js/main.c9b6d044.chunk.js",
+    "main.js.map": "./static/js/main.c9b6d044.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.386c27b3.js",
+    "runtime-main.js.map": "./static/js/runtime-main.386c27b3.js.map",
+    "static/js/2.8520b836.chunk.js": "./static/js/2.8520b836.chunk.js",
+    "static/js/2.8520b836.chunk.js.map": "./static/js/2.8520b836.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.997042d01295d07ab718b23651777d8e.js": "./precache-manifest.997042d01295d07ab718b23651777d8e.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/main.23b232eb.chunk.css.map": "./static/css/main.23b232eb.chunk.css.map",
+    "static/js/2.8520b836.chunk.js.LICENSE": "./static/js/2.8520b836.chunk.js.LICENSE",
+    "static/media/p1Back.jpg": "./static/media/p1Back.d4876dce.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e6a843e.js",
+    "static/js/runtime-main.386c27b3.js",
     "static/js/2.8520b836.chunk.js",
     "static/css/main.23b232eb.chunk.css",
-    "static/js/main.ca7a288b.chunk.js"
+    "static/js/main.c9b6d044.chunk.js"
   ]
 }
