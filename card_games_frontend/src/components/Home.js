@@ -9,6 +9,12 @@ class Home extends Component {
       <div className="home-grid">
         <div className="foriegn">
           <strong>Foriegn</strong>
+          <div className="durak-link-container">
+            <Link to="/durak">
+              <div className="durak-link-image"></div>
+              Durak
+            </Link>
+          </div>
         </div>
         <div className="classics">
           <strong>Classics</strong>
@@ -19,8 +25,14 @@ class Home extends Component {
             </Link>
           </div>
         </div>
-        <div className="new-school">
-          <strong>New-School</strong>
+        <div className="casino">
+          <strong>Casino</strong>
+          <div className="casino-link-container">
+            <Link to="/poker">
+              <div className="poker-link-image"></div>
+              Poker
+            </Link>
+          </div>
         </div>
       </div>
     );
