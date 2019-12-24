@@ -5,8 +5,7 @@ import Home from "./components/Home";
 import War from "./components/War";
 function App() {
   return (
-    <BrowserRouter basename="/card_games" /> 
-    <Router >
+    <Router basename="/card_games">
       <div className="App">
         <header className="App-header">
           <nav>
