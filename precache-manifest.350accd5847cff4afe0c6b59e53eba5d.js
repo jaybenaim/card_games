@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8eb6083685e132e661ba4508063c5df7",
+    "revision": "0841ae8771cfc12ac1730f72881a38b8",
     "url": "/jaybenaim/card_games/index.html"
   },
   {

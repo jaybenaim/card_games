@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "card games",
+  "short_name": "card games",
+  "name": "card_games",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
