@@ -11,7 +11,7 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/card_games">Home</Link>
               </li>
               <li>
                 <Link to="/war">War</Link>
@@ -20,10 +20,10 @@ function App() {
           </nav>
         </header>
         <Switch>
-          <Route path="/home">
+          <Route exact path="/card_games">
             <Home />
           </Route>
-          <Route path="/war">
+          <Route exact path="/war">
             <War />
           </Route>
         </Switch>
