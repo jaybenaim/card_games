@@ -86,8 +86,8 @@ class War extends Component {
     card1 = warCard1 || card1;
     card2 = warCard2 || card2;
     // remove after test  for war
-    card1.value = 7;
-    card2.value = 7;
+    // card1.value = 7;
+    // card2.value = 7;
     // end test
 
     if (card1 && card2) {

@@ -9,13 +9,13 @@ function App() {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to="/card_games">Home</Link>
+            <Link to="/">Home</Link>
 
             <Link to="/war">War</Link>
           </nav>
         </header>
         <Switch>
-          <Route exact path="/card_games">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/war">
