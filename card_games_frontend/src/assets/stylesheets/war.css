@@ -33,3 +33,43 @@
 #black {
   color: black !important;
 }
+.card-grid-container,
+.score-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.card1,
+.player-score {
+  grid-column: 1;
+}
+.card2,
+.computer-score {
+  grid-column: 2;
+}
+.get-card-btn {
+  margin-top: 8%;
+  margin-bottom: 10%;
+}
+
+.player-score-label,
+.computer-score-label {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.player-score,
+.computer-score {
+  background-color: #515960;
+  color: white;
+  padding: 4px;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 200;
+}
+@media (max-width: 450px) {
+  .card-grid-container img {
+    max-width: 200px;
+  }
+}

@@ -86,8 +86,8 @@ class War extends Component {
     card1 = warCard1 || card1;
     card2 = warCard2 || card2;
     // remove after test  for war
-    // card1.value = 7;
-    // card2.value = 7;
+    card1.value = 7;
+    card2.value = 7;
     // end test
 
     if (card1 && card2) {
@@ -260,11 +260,16 @@ class War extends Component {
           computerScore={computerScore}
           isLoaded={isLoaded}
         />
-        <Button variant="outline-primary" onClick={() => this.getCards()}>
+        <Button
+          variant="outline-primary"
+          className="get-card-btn"
+          onClick={() => this.getCards()}
+        >
           Get Card
         </Button>
         {initWar ? (
           <>
+            <br />
             <strong> WAR </strong>
             <WarBoard
               deckId={deckId}
@@ -282,13 +287,13 @@ class War extends Component {
           </>
         ) : (
           <>
-            <div className="card1 container">
-              <strong>You</strong>
-              <img src={image1} alt={card1}></img>
-            </div>
-            <div className="card2 container">
-              <strong>Computer</strong>
-              <img src={image2} alt={card2}></img>
+            <div className="card-grid-container">
+              <div className="card1 ">
+                <img src={image1} alt={card1}></img>
+              </div>
+              <div className="card2 ">
+                <img src={image2} alt={card2}></img>
+              </div>
             </div>
           </>
         )}

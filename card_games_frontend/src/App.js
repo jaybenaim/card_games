@@ -9,14 +9,9 @@ function App() {
       <div className="App">
         <header className="App-header">
           <nav>
-            <ul>
-              <li>
-                <Link to="/card_games">Home</Link>
-              </li>
-              <li>
-                <Link to="/war">War</Link>
-              </li>
-            </ul>
+            <Link to="/card_games">Home</Link>
+
+            <Link to="/war">War</Link>
           </nav>
         </header>
         <Switch>

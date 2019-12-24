@@ -29,3 +29,36 @@
   margin-left: 20px;
   z-index: 5;
 }
+@media (max-width: 450px) {
+  .card-grid-container img {
+    /* max-width: 200px; */
+  }
+  .card {
+    /* width: 140px; */
+  }
+  .back-of-card {
+    width: 290px;
+    margin-top: 48px;
+  }
+  .war-card-match {
+    margin-left: 50px;
+    width: 210px;
+  }
+  .card-1,
+  .card-4 {
+    margin-left: -200px;
+  }
+  .card-2,
+  .card-5 {
+    margin-left: -160px;
+  }
+  .card-3,
+  .card-6 {
+    margin-left: -120px;
+  }
+
+  .top-card {
+    width: 210px;
+    margin-left: -20px;
+  }
+}

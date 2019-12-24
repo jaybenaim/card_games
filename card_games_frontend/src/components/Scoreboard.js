@@ -7,20 +7,12 @@ class Scoreboard extends Component {
   render() {
     const { userScore, computerScore } = this.props;
     return (
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Your Score</th>
-            <th>Computer Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{userScore}</td>
-            <td>{computerScore}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <div className="score-grid-container">
+        <div className=" player-score-label">Your Score</div>
+        <div className=" computer-score-label">Computer Score</div>
+        <div className="player-score">{userScore}</div>
+        <div className="computer-score">{computerScore}</div>
+      </div>
     );
   }
 }

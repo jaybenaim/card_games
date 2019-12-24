@@ -24,7 +24,7 @@ class WarBoard extends Component {
       <div>
         <strong>You</strong>
         <div className="card1-container container">
-          <img src={card1Image} alt={card1}></img>
+          <img src={card1Image} alt={card1} className="war-card-match"></img>
 
           <img
             src={backOfCard}
@@ -45,7 +45,7 @@ class WarBoard extends Component {
         </div>
         <strong>Computer</strong>
         <div className="card2-container container">
-          <img src={card2Image} alt={card2}></img>
+          <img src={card2Image} alt={card2} className="war-card-match"></img>
 
           <img
             src={backOfCard}
