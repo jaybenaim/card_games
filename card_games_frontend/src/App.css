@@ -36,6 +36,11 @@ nav {
 nav a {
   margin-left: 10%;
 }
+footer {
+  margin-top: 360px;
+  background-color: #eee;
+  padding: 40px;
+}
 
 @keyframes App-logo-spin {
   from {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
 
 class Scoreboard extends Component {
   state = {};

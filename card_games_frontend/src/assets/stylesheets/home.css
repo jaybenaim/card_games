@@ -1,0 +1,27 @@
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.classics {
+  grid-column: 2;
+  margin-top: 40px;
+}
+.foriegn,
+.new-school {
+  margin-top: 40px;
+}
+.war-link-image {
+  margin-top: 40px;
+  background: url(../images/war.jpg);
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+}
+.war-link-container a {
+  color: black;
+  padding-top: 12px;
+  font-weight: 500;
+}

@@ -10,8 +10,6 @@ function App() {
         <header className="App-header">
           <nav>
             <Link to="/">Home</Link>
-
-            <Link to="/war">War</Link>
           </nav>
         </header>
         <Switch>
@@ -22,6 +20,17 @@ function App() {
             <War />
           </Route>
         </Switch>
+        <footer>
+          <div>
+            {" "}
+            <a
+              target="_blank"
+              href="https://github.com/jaybenaim/card_games/issues"
+            >
+              Submit an issue
+            </a>
+          </div>
+        </footer>
       </div>
     </Router>
   );

@@ -4,7 +4,6 @@ import cards from "../assets/javascripts/war.js";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import Scoreboard from "./Scoreboard";
-import { Prev } from "react-bootstrap/PageItem";
 import WarBoard from "./WarBoard";
 
 class War extends Component {
@@ -76,13 +75,13 @@ class War extends Component {
           this.updateScore();
         }, 800);
       });
-    const { showWar, initWar } = this.state;
+    const { initWar } = this.state;
     if (initWar) {
       this.setState({ initWar: false });
     }
   };
   updateScore = (warCard1, warCard2) => {
-    let { card1, card2, isLoaded } = this.state;
+    let { card1, card2 } = this.state;
     card1 = warCard1 || card1;
     card2 = warCard2 || card2;
     // remove after test  for war
@@ -130,7 +129,7 @@ class War extends Component {
           };
         });
       }
-      if (rankedCardValue1 == rankedCardValue2) {
+      if (rankedCardValue1 === rankedCardValue2) {
         const { initWar } = this.state;
         this.setState({
           initWar: !initWar
@@ -142,56 +141,6 @@ class War extends Component {
   runWar = () => {
     this.getCardsForPlayer1();
     this.getCardsForPlayer2();
-    const { isLoaded } = this.state;
-    if (!isLoaded) {
-      const { p1Card4, p2Card4 } = this.state;
-      if (p1Card4 && p2Card4) {
-        const suitRankings = {
-          ACE: 14,
-          KING: 13,
-          QUEEN: 12,
-          JACK: 11,
-          10: 10,
-          9: 9,
-          8: 8,
-          7: 7,
-          6: 6,
-          5: 5,
-          4: 4,
-          3: 3,
-          2: 2,
-          1: 1
-        };
-
-        this.setState({
-          warRankedCardValue1: suitRankings[p1Card4.value],
-          warRankedCardValue2: suitRankings[p2Card4.value]
-        });
-        setTimeout(() => {
-          const { warRankedCardValue1, warRankedCardValue2 } = this.state;
-          if (warRankedCardValue1 > warRankedCardValue2) {
-            this.setState(prevState => {
-              return {
-                userScore: (prevState.userScore += 1)
-              };
-            });
-          }
-          if (warRankedCardValue2 > warRankedCardValue1) {
-            this.setState(prevState => {
-              return {
-                computerScore: (prevState.computerScore += 1)
-              };
-            });
-          }
-          if (warRankedCardValue1 == warRankedCardValue2) {
-            const { initWar } = this.state;
-            this.setState({
-              initWar: !initWar
-            });
-          }
-        }, 100);
-      }
-    }
   };
   getCardsForPlayer1 = () => {
     const { isLoaded, deckId } = this.state;
@@ -226,7 +175,6 @@ class War extends Component {
       });
   };
   getCards = () => {
-    const { card1, card2, isLoaded } = this.state;
     this.getCardsFromApi();
   };
   componentDidMount() {
@@ -235,7 +183,6 @@ class War extends Component {
   componentDidUpdate() {}
   render() {
     const {
-      draw,
       image1,
       image2,
       card1,

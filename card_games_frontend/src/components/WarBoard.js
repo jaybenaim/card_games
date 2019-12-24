@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import warBoard from "../assets/stylesheets/warBoard.css";
+import "../assets/stylesheets/warBoard.css";
 import backOfCard from "../assets/images/p1Back.jpg";
 
 class WarBoard extends Component {
