@@ -39,6 +39,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jaybenaim.github.io/jaybenaim/card_games/",
-  "proxy": "https://jaybenaim.github.io/jaybenaim/card_games/"
+  "proxy": "https://jaybenaim.github.io/jaybenaim/card_games/",
+  "homepage": "."
 }
