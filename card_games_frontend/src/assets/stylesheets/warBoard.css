@@ -1,0 +1,31 @@
+.back-of-card {
+  position: absolute;
+  margin-left: -40px;
+  max-height: 209px;
+  transform: rotate(90deg);
+  margin-top: 10%;
+  border-radius: 20px;
+}
+.card1-container,
+.card2-container {
+  margin-left: -120px;
+
+  padding: 20px;
+}
+.card-1,
+.card-4 {
+  margin-left: -200px;
+}
+.card-2,
+.card-5 {
+  margin-left: -160px;
+}
+.card-3,
+.card-6 {
+  margin-left: -120px;
+}
+.top-card {
+  position: absolute;
+  margin-left: 20px;
+  z-index: 5;
+}
