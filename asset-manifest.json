@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/jaybenaim/card_games/static/css/main.23b232eb.chunk.css",
-    "main.js": "/jaybenaim/card_games/static/js/main.92e8d9d6.chunk.js",
-    "main.js.map": "/jaybenaim/card_games/static/js/main.92e8d9d6.chunk.js.map",
+    "main.js": "/jaybenaim/card_games/static/js/main.7b8120ee.chunk.js",
+    "main.js.map": "/jaybenaim/card_games/static/js/main.7b8120ee.chunk.js.map",
     "runtime-main.js": "/jaybenaim/card_games/static/js/runtime-main.2e6a843e.js",
     "runtime-main.js.map": "/jaybenaim/card_games/static/js/runtime-main.2e6a843e.js.map",
     "static/js/2.8520b836.chunk.js": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js",
     "static/js/2.8520b836.chunk.js.map": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js.map",
     "index.html": "/jaybenaim/card_games/index.html",
-    "precache-manifest.f79bdc194a2233c5198b8d39c4dab23d.js": "/jaybenaim/card_games/precache-manifest.f79bdc194a2233c5198b8d39c4dab23d.js",
+    "precache-manifest.ad83b65e4ec27c10bc492b98d4ab3205.js": "/jaybenaim/card_games/precache-manifest.ad83b65e4ec27c10bc492b98d4ab3205.js",
     "service-worker.js": "/jaybenaim/card_games/service-worker.js",
     "static/css/main.23b232eb.chunk.css.map": "/jaybenaim/card_games/static/css/main.23b232eb.chunk.css.map",
     "static/js/2.8520b836.chunk.js.LICENSE": "/jaybenaim/card_games/static/js/2.8520b836.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2e6a843e.js",
     "static/js/2.8520b836.chunk.js",
     "static/css/main.23b232eb.chunk.css",
-    "static/js/main.92e8d9d6.chunk.js"
+    "static/js/main.7b8120ee.chunk.js"
   ]
 }
