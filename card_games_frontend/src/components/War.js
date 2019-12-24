@@ -253,9 +253,6 @@ class War extends Component {
 
     return (
       <div className="card-container">
-        <Button variant="outline-primary" onClick={() => this.getCards()}>
-          Get Card
-        </Button>
         <Scoreboard
           card1={card1}
           card2={card2}
@@ -263,6 +260,9 @@ class War extends Component {
           computerScore={computerScore}
           isLoaded={isLoaded}
         />
+        <Button variant="outline-primary" onClick={() => this.getCards()}>
+          Get Card
+        </Button>
         {initWar ? (
           <>
             <strong> WAR </strong>
