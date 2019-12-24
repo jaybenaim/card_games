@@ -80,7 +80,10 @@
   .war-link-image,
   .durak-link-image,
   .poker-link-image {
-    background-size: 28em;
-    background-position-y: -70px;
+    background-size: 32em;
+    background-position-y: -130px;
+  }
+  .poker-link-image {
+    margin-right: 40px;
   }
 }
