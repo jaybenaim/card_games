@@ -20,7 +20,7 @@ function App() {
           </nav>
         </header>
         <Switch>
-          <Route exact path="/card_games/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/war">
