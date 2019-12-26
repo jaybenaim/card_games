@@ -3,7 +3,39 @@
   background: rgba(34, 139, 34, 0.5);
   margin-left: -20px;
 }
-
+.card-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 140px;
+}
+.player1 {
+  grid-area: 1/3;
+  margin-top: 10px;
+}
+.player2 {
+  grid-area: 2/5;
+}
+.player3 {
+  grid-area: 3/3;
+}
+.player4 {
+  grid-area: 2/1;
+}
+.player5 {
+  grid-area: 1/2;
+  margin-top: 10px;
+}
+.player6 {
+  grid-area: 1/4;
+  margin-top: 10px;
+}
+.player7 {
+  grid-area: 3/4;
+}
+.player8 {
+  grid-area: 3/2;
+}
 @media (max-width: 900px) {
   .center-table {
     min-width: 800px;
