@@ -1,11 +1,41 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../assets/stylesheets/durak.css";
+import DurakStartScreen from "./DurakStartScreen";
+import { Button, ButtonToolbar } from "react-bootstrap";
 class Durak extends Component {
-  state = {};
+  state = {
+    showStartGameScreen: false,
+    playerName: null,
+    players: null
+  };
+  // .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+  startGame = () => {};
+  // getPlayers = (playerName, players) => {
+  //   return playerName;
+  // };
+  showStartScreen = () => {
+    const { showStartGameScreen } = this.state;
+    this.setState({ showStartGameScreen: !showStartGameScreen });
+  };
+
   render() {
+    const { showStartGameScreen, playerName } = this.state;
+
     return (
       <>
         <div className="durak-container">
+          {!showStartGameScreen && (
+            <ButtonToolbar>
+              <Button variant="primary" onClick={() => this.showStartScreen()}>
+                Start Game
+              </Button>
+            </ButtonToolbar>
+          )}
+          <DurakStartScreen
+            show={showStartGameScreen}
+            onHide={() => this.showStartScreen()}
+          />
           <div className="game-table">
             <div className="outer-table">
               <div className="center-table">
@@ -16,8 +46,6 @@ class Durak extends Component {
                   <div className="player4 seat">seat4</div>
                   <div className="player5 seat">seat5</div>
                   <div className="player6 seat">seat6</div>
-                  <div className="player7 seat">seat7</div>
-                  <div className="player8 seat">seat8</div>
                 </div>
               </div>
             </div>

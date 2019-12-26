@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../assets/stylesheets/durak.css";
+import "../assets/stylesheets/poker.css";
 class Poker extends Component {
   state = {};
   render() {

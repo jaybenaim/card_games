@@ -7,21 +7,40 @@ from django.views.decorators.http import require_http_methods
 # from .models import *
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from card_games.serializers import UserSerializer, GroupSerializer
-
+from card_games.serializers import UserSerializer, GroupSerializer, GameSerializer
+from .models import * 
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework import viewsets, permissions
 
 def root(request): 
     return redirect('home/')
     
 def home(request): 
         return render(request, 'index.html')
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
 
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+      
+        return Response({'token': token.key, 'id': token.user_id , "username": token.user.username })
+
+class UserViewSet(viewsets.ModelViewSet): 
+    """ API endpoint that allows users to be viewed or edited """ 
+    queryset = User.objects.filter()
+    serializer_class = UserSerializer 
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (permissions.AllowAny,)
+        if self.request.method == 'GET':
+            self.permission_classes = (permissions.AllowAny,)
+        return super(UserViewSet, self).get_permissions()
+    
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
@@ -29,3 +48,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class GameViewSet(viewsets.ModelViewSet):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
