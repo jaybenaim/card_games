@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal } from "react-bootstrap";
+import {  Modal } from "react-bootstrap";
 import Api from "../assets/api/api";
 import "../assets/stylesheets/register.css";
 class Register extends Component {

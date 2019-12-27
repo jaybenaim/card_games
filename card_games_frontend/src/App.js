@@ -6,9 +6,7 @@ import War from "./components/War";
 import Durak from "./components/Durak";
 import Poker from "./components/Poker";
 import Register from "./components/Register";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import { Button } from "react-bootstrap";
+
 class App extends React.Component {
   state = {
     isLoggedIn: localStorage.token ? true : false,
