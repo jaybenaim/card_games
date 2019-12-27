@@ -25,7 +25,9 @@ SECRET_KEY = '7zjl++h!jbq+w_#g$elp6by(7d0zmorr4oh=&8mj(9ez-*5ezj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://jays-card-games.herokuapp.com/"
+]
 
 
 # Application definition
