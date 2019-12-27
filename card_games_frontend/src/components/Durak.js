@@ -10,6 +10,7 @@ class Durak extends Component {
     showStartGameScreen: false,
     playerName: null,
     gameId: "",
+    deckId: "",
     players: 0,
     score: 0,
     progress: "in-progress",
@@ -18,25 +19,75 @@ class Durak extends Component {
     seatClass3: "player3 seat empty",
     seatClass4: "player4 seat empty",
     seatClass5: "player5 seat empty",
-    seatClass6: "player6 seat empty"
+    seatClass6: "player6 seat empty",
+    seatCards1: [],
+    seatCards2: [],
+    seatCards3: [],
+    seatCards4: [],
+    seatCards5: [],
+    seatCards6: [],
+    cardsDealt: false,
+    wildCardImage: null
   };
-  // .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
   startGame = () => {};
+
+  dealCards = (cardAmount, player) => {
+    const { cardsDealt } = this.state;
+    axios
+      .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+      .then(res => {
+        const { deck_id: deckId } = res.data;
+        setTimeout(() => {
+          axios
+            .get(
+              `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${cardAmount}`
+            )
+            .then(res => {
+              const cards = res.data.cards;
+              this.setState({ [`seatCards${player}`]: cards, deckId });
+            });
+        });
+      });
+    this.setState({ cardsDealt: !cardsDealt });
+  };
+  drawCard = () => {
+    const { deckId } = this.state;
+    axios
+      .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+      .then(res => {
+        let image = res.data.cards[0].image;
+        console.log(res.data);
+        this.setState({ wildCardImage: image });
+      });
+  };
   checkPlayers = () => {
     let { gameId, players } = this.state;
     players = Number(players);
 
     switch (players) {
       case 1:
+        // run dealCards fn(6, 1)
+        this.dealCards(6, 1);
+        this.drawCard();
+
         this.setState({ seatClass1: "player1 seat taken" });
         break;
       case 2:
+        this.dealCards(6, 1);
+        this.dealCards(6, 2);
+        this.drawCard();
+
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat taken"
         });
         break;
       case 3:
+        this.dealCards(6, 1);
+        this.dealCards(6, 2);
+        this.dealCards(6, 3);
+        this.drawCard();
+
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat taken",
@@ -44,6 +95,12 @@ class Durak extends Component {
         });
         break;
       case 4:
+        this.dealCards(6, 1);
+        this.dealCards(6, 2);
+        this.dealCards(6, 3);
+        this.dealCards(6, 4);
+        this.drawCard();
+
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat taken",
@@ -52,6 +109,13 @@ class Durak extends Component {
         });
         break;
       case 5:
+        this.dealCards(6, 1);
+        this.dealCards(6, 2);
+        this.dealCards(6, 3);
+        this.dealCards(6, 4);
+        this.dealCards(6, 5);
+        this.drawCard();
+
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat taken",
@@ -61,6 +125,14 @@ class Durak extends Component {
         });
         break;
       case 6:
+        this.dealCards(6, 1);
+        this.dealCards(6, 2);
+        this.dealCards(6, 3);
+        this.dealCards(6, 4);
+        this.dealCards(6, 5);
+        this.dealCards(6, 6);
+        this.drawCard();
+
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat taken",
@@ -69,13 +141,12 @@ class Durak extends Component {
           seatClass5: "player5 seat taken",
           seatClass6: "player6 seat taken"
         });
+        break;
       default:
         this.setState({ seatClass1: "player1 seat taken" });
     }
   };
-  // getPlayers = (playerName, players) => {
-  //   return playerName;
-  // };
+
   showStartScreen = () => {
     const { showStartGameScreen } = this.state;
     this.setState({ showStartGameScreen: !showStartGameScreen });
@@ -85,7 +156,6 @@ class Durak extends Component {
     this.setState({ players: event.target.value });
   };
   handleSubmit = () => {
-    // post to /games
     const { players, score, progress } = this.state;
     const { id, token } = localStorage;
 
@@ -102,10 +172,10 @@ class Durak extends Component {
     Api.post("games/", data, headers).then(res => {
       this.setState({ gameId: res.data.id });
       this.checkPlayers();
-      // window.location.reload(true);
     });
     this.showStartScreen();
   };
+
   render() {
     const {
       showStartGameScreen,
@@ -116,7 +186,9 @@ class Durak extends Component {
       seatClass3,
       seatClass4,
       seatClass5,
-      seatClass6
+      seatClass6,
+      cardsDealt,
+      wildCardImage
     } = this.state;
 
     return (
@@ -172,12 +244,22 @@ class Durak extends Component {
             <div className="outer-table">
               <div className="center-table">
                 <div className="card-grid">
-                  <div className={seatClass1}>seat1</div>
-                  <div className={seatClass2}>seat2</div>
-                  <div className={seatClass3}>seat3</div>
-                  <div className={seatClass4}>seat4</div>
-                  <div className={seatClass5}>seat5</div>
-                  <div className={seatClass6}>seat6</div>
+                  <div className={seatClass1}></div>
+                  <div className={seatClass2}></div>
+                  <div className={seatClass3}></div>
+                  {cardsDealt && (
+                    <div className="pile taken" onClick={() => this.drawCard()}>
+                      <img
+                        src={wildCardImage}
+                        className="wildcard"
+                        alt="wildcard"
+                      />
+                    </div>
+                  )}
+
+                  <div className={seatClass4}></div>
+                  <div className={seatClass5}></div>
+                  <div className={seatClass6}></div>
                 </div>
               </div>
             </div>

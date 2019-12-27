@@ -112,7 +112,9 @@ class Register extends Component {
                 <div className="card-footer">
                   {props.login ? (
                     <div className="d-flex justify-content-center">
-                      <a href="#">Forgot your password?</a>
+                      <a href="javascript:history.back()">
+                        Forgot your password?
+                      </a>
                     </div>
                   ) : (
                     <div className="d-flex justify-content-center">
