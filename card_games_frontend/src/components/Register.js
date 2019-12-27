@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
+import Api from "../assets/api/api";
 import "../assets/stylesheets/register.css";
 class Register extends Component {
   state = {
@@ -14,6 +15,18 @@ class Register extends Component {
     const password = e.target.value;
     this.setState({ password });
   };
+  handleSubmit = e => {
+    const { username, password } = this.state;
+    const data = { username, password };
+    Api.post("users/", data)
+      .then(res => {
+        console.log(res.statusText);
+        // set window.
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     const { props } = this;
     return (
@@ -24,7 +37,7 @@ class Register extends Component {
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <div className="container" closeButton>
+          <div className="container">
             <div className="d-flex justify-content-center h-100">
               <div className="card">
                 <div className="card-header">
@@ -42,7 +55,7 @@ class Register extends Component {
                         type="text"
                         className="form-control"
                         placeholder="username"
-                        onChange={() => this.handleUsername()}
+                        onChange={this.handleUsername}
                       />
                     </div>
                     <div className="input-group form-group">
@@ -55,22 +68,19 @@ class Register extends Component {
                         type="password"
                         className="form-control"
                         placeholder="password"
-                        onChange={() => this.handlePassword()}
+                        onChange={this.handlePassword}
                       />
                     </div>
                     <div className="row align-items-center remember">
                       <input type="checkbox" />
                       Remember Me
                     </div>
-                    <div className="form-group">
-                      <input
-                        type="submit"
-                        value="Login"
-                        className="btn float-right login_btn"
-                      />
-                    </div>
+                    <div className="form-group"></div>
                   </form>
                 </div>
+                <button className="" onClick={() => this.handleSubmit()}>
+                  Submit
+                </button>
                 <div className="card-footer">
                   <div className="d-flex justify-content-center links">
                     Don't have an account?<a href="#">Sign Up</a>
