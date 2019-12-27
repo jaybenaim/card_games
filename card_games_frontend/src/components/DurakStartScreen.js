@@ -4,7 +4,7 @@ import Api from "../assets/api/api";
 
 class DurakStartScreen extends Component {
   state = {
-    name: null,
+    gameId: "",
     players: 1,
     score: 0,
     progress: "in-progress"
@@ -18,22 +18,21 @@ class DurakStartScreen extends Component {
   handleSubmit = () => {
     // post to /games
     const { players, score, progress } = this.state;
-    const { userUrl, token } = localStorage;
+    const { id, token } = localStorage;
     console.log(localStorage);
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`
     };
     const data = {
-      user: userUrl,
+      user: id,
       player_amount: players,
       score: score,
       progress
     };
     Api.post("games/", data, headers).then(res => {
-      console.log(res.data);
-      // window.location.reload(true);
-      //  this.setState({ gameId: res.data.id  });
+      window.location.reload(true);
+      this.setState({ gameId: res.data.id });
     });
   };
   componentDidMount() {}
@@ -49,14 +48,6 @@ class DurakStartScreen extends Component {
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <Form>
-            {/*  <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="name"
-                placeholder="John.."
-                onChange={this.handleName}
-              />
-            </Form.Group> */}
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Players</Form.Label>
               <Form.Control as="select" onChange={this.handleDropdown}>
@@ -73,7 +64,7 @@ class DurakStartScreen extends Component {
         <Modal.Footer>
           {/* <Button onClick={props.onHide} className="primary"> */}
           <Button onClick={this.handleSubmit} className="primary">
-            Save
+            Go
           </Button>
         </Modal.Footer>
       </Modal>
