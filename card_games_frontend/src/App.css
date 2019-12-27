@@ -6,11 +6,25 @@
   height: 40vmin;
   pointer-events: none;
 }
+.home-nav-link {
+  margin-left: 58%;
+  padding-left: 80px;
+}
 .login-btn {
   float: right;
-  color: black;
-  margin-left: 60px;
-  padding-left: 50px;
+  color: #007bff;
+  margin-left: 360px;
+  font-size: 0.8em !important;
+}
+.signup-btn,
+.logout-btn {
+  float: right;
+  font-size: 0.8em !important;
+  color: #007bff !important;
+}
+.user-nav {
+  width: 400px;
+  display: block;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

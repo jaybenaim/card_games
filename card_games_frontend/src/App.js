@@ -40,7 +40,9 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <nav>
-              <Link to="/">Home</Link>
+              <Link to="/" className="home-nav-link">
+                Home
+              </Link>
               <div>
                 {" "}
                 {!isLoggedIn ? (
@@ -52,7 +54,7 @@ class App extends React.Component {
                       Login
                     </div>
                     <div
-                      className="login-btn"
+                      className="signup-btn"
                       onClick={() => this.showSignupForm()}
                     >
                       Sign up
@@ -60,11 +62,14 @@ class App extends React.Component {
                   </>
                 ) : (
                   <div
-                    className="login-btn"
+                    className="logout-btn"
                     onClick={() => this.handleLogout()}
                   >
                     Logout
-                    <br /> Signed in as, {localStorage.username}
+                    <br />
+                    <span className="user-nav">
+                      Signed in as, {localStorage.username}
+                    </span>
                   </div>
                 )}
                 {showLoginForm && (
