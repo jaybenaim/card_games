@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {  Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import Api from "../assets/api/api";
 import "../assets/stylesheets/register.css";
 class Register extends Component {
@@ -25,6 +25,7 @@ class Register extends Component {
           localStorage.token = res.data.token;
           localStorage.id = res.data.id;
           localStorage.username = res.data.username;
+          localStorage.userUrl = `https://jays-card-games.herokuapp.com/${res.data.id}/`;
           toggleForm();
           window.location.reload(true);
         })
@@ -39,6 +40,8 @@ class Register extends Component {
           localStorage.token = res.data.token;
           localStorage.id = res.data.id;
           localStorage.username = res.data.username;
+          localStorage.userUrl = `https://jays-card-games.herokuapp.com/${res.data.id}/`;
+
           toggleForm();
           window.location.reload(true);
         })

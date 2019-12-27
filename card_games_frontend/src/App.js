@@ -27,6 +27,7 @@ class App extends React.Component {
     window.localStorage["token"] = "";
     window.localStorage["username"] = "";
     window.localStorage["id"] = "";
+    localStorage.userUrl = "";
 
     this.setState({ isLoggedIn: false });
   };

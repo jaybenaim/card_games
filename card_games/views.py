@@ -25,8 +25,9 @@ class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
+     
       
-        return Response({'token': token.key, 'id': token.user_id , "username": token.user.username })
+        return Response({'token': token.key, 'id': token.user_id , "username": token.user.username, "url": token.url })
 
 class UserViewSet(viewsets.ModelViewSet): 
     """ API endpoint that allows users to be viewed or edited """ 
@@ -58,5 +59,5 @@ class GameViewSet(viewsets.ModelViewSet):
             self.permission_classes = (permissions.AllowAny,)
         if self.request.method == 'GET':
             self.permission_classes = (permissions.AllowAny,)
-        return super(UserViewSet, self).get_permissions()
+        return super(GameViewSet, self).get_permissions()
 

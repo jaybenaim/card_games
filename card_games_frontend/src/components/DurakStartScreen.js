@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import Api from "../assets/api/api";
 
 class DurakStartScreen extends Component {
   state = {
     name: null,
-    players: null
+    players: null,
+    score: null,
+    progress: "in-progress"
   };
   handleName = event => {
     this.setState({ name: event.target.value });
@@ -12,7 +15,19 @@ class DurakStartScreen extends Component {
   handleDropdown = event => {
     this.setState({ players: event.target.value });
   };
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    // post to /games
+    const { players, score, progress } = this.state;
+    const { userUrl, token } = localStorage;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`
+    };
+    const data = { user: userUrl, playerAmount: players, score, progress };
+    Api.post("games/", data, headers).then(res => {
+      console.log(res.data);
+    });
+  };
   componentDidMount() {}
   render() {
     const { props } = this;
@@ -26,14 +41,14 @@ class DurakStartScreen extends Component {
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId="exampleForm.ControlInput1">
+            {/*  <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="name"
                 placeholder="John.."
                 onChange={this.handleName}
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Players</Form.Label>
               <Form.Control as="select" onChange={this.handleDropdown}>
@@ -48,7 +63,8 @@ class DurakStartScreen extends Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide} class="primary">
+          {/* <Button onClick={props.onHide} className="primary"> */}
+          <Button onClick={this.handleSubmit} className="primary">
             Save
           </Button>
         </Modal.Footer>
