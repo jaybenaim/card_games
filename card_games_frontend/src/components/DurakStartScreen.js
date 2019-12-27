@@ -5,8 +5,8 @@ import Api from "../assets/api/api";
 class DurakStartScreen extends Component {
   state = {
     name: null,
-    players: null,
-    score: null,
+    players: 1,
+    score: 0,
     progress: "in-progress"
   };
   handleName = event => {
@@ -19,6 +19,7 @@ class DurakStartScreen extends Component {
     // post to /games
     const { players, score, progress } = this.state;
     const { userUrl, token } = localStorage;
+
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`

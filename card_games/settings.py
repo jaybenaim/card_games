@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "jays-card-games.herokuapp.com", 
-        "localhost"
+    "localhost"
 ]
 
 
