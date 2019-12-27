@@ -25,7 +25,7 @@ class Register extends Component {
           localStorage.token = res.data.token;
           localStorage.id = res.data.id;
           localStorage.username = res.data.username;
-          localStorage.userUrl = `https://jays-card-games.herokuapp.com/${res.data.id}/`;
+          localStorage.userUrl = `https://jays-card-games.herokuapp.com/users/${res.data.id}/`;
           toggleForm();
           window.location.reload(true);
         })
@@ -40,7 +40,7 @@ class Register extends Component {
           localStorage.token = res.data.token;
           localStorage.id = res.data.id;
           localStorage.username = res.data.username;
-          localStorage.userUrl = `https://jays-card-games.herokuapp.com/${res.data.id}/`;
+          localStorage.userUrl = `https://jays-card-games.herokuapp.com/users/${res.data.id}/`;
 
           toggleForm();
           window.location.reload(true);

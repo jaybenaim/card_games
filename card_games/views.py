@@ -20,13 +20,13 @@ def root(request):
 def home(request): 
         return render(request, 'index.html')
 
-
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         
         return Response({'token': token.key, 'id': token.user_id , "username": token.user.username })
+
 
 class UserViewSet(viewsets.ModelViewSet): 
     """ API endpoint that allows users to be viewed or edited """ 

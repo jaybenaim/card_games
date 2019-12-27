@@ -19,14 +19,21 @@ class DurakStartScreen extends Component {
     // post to /games
     const { players, score, progress } = this.state;
     const { userUrl, token } = localStorage;
-
+    console.log(localStorage);
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`
     };
-    const data = { user: userUrl, playerAmount: players, score, progress };
+    const data = {
+      user: userUrl,
+      player_amount: players,
+      score: score,
+      progress
+    };
     Api.post("games/", data, headers).then(res => {
       console.log(res.data);
+      // window.location.reload(true);
+      //  this.setState({ gameId: res.data.id  });
     });
   };
   componentDidMount() {}
