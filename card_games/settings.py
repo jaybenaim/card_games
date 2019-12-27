@@ -26,7 +26,7 @@ SECRET_KEY = '7zjl++h!jbq+w_#g$elp6by(7d0zmorr4oh=&8mj(9ez-*5ezj'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://jays-card-games.herokuapp.com/"
+    "jays-card-games.herokuapp.com"
 ]
 
 
