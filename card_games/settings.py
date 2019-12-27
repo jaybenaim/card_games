@@ -140,5 +140,6 @@ CORS_ORIGIN_WHITELIST = [
     "https://example.com",
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://jaybenaim.github.io"
    
 ]
