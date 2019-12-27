@@ -1,3 +1,18 @@
+.start-game-durak {
+  margin: 0 auto;
+  background-color: #ffc312;
+}
+.primary {
+  background-color: #ffc312;
+  color: #ffc312;
+}
+.btn-primary {
+  background-color: #ffc312;
+  color: #000;
+}
+.form-label {
+  color: #ffc312;
+}
 .game-table {
   height: 1500px;
   background: rgba(34, 139, 34, 0.5);

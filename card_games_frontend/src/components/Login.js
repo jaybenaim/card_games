@@ -2,7 +2,7 @@ import React, { Component } from "react";
 class Login extends Component {
   state = {};
   render() {
-    return <div>Login</div>;
+    return <div className="login-btn">Login</div>;
   }
 }
 

@@ -23,11 +23,7 @@ class DurakStartScreen extends Component {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.ControlInput1">
@@ -52,7 +48,9 @@ class DurakStartScreen extends Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Save</Button>
+          <Button onClick={props.onHide} class="primary">
+            Save
+          </Button>
         </Modal.Footer>
       </Modal>
     );
