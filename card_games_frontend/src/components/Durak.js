@@ -27,7 +27,11 @@ class Durak extends Component {
         <div className="durak-container">
           {!showStartGameScreen && (
             <ButtonToolbar>
-              <Button variant="primary" onClick={() => this.showStartScreen()}>
+              <Button
+                variant="primary"
+                className="start-game-durak"
+                onClick={() => this.showStartScreen()}
+              >
                 Start Game
               </Button>
             </ButtonToolbar>
