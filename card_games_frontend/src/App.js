@@ -11,7 +11,8 @@ import Login from "./components/Login";
 import { Button } from "react-bootstrap";
 class App extends React.Component {
   state = {
-    isLoggedIn: window.localStorage["token"] ? true : false,
+    isLoggedIn: localStorage.token ? true : false,
+    username: localStorage.username,
     showSignupForm: false,
     showLoginForm: false
   };
@@ -43,30 +44,43 @@ class App extends React.Component {
               <div>
                 {" "}
                 {!isLoggedIn ? (
-                  <div
-                    className="login-btn"
-                    onClick={() => this.showLoginForm()}
-                  >
-                    Login
-                  </div>
+                  <>
+                    <div
+                      className="login-btn"
+                      onClick={() => this.showLoginForm()}
+                    >
+                      Login
+                    </div>
+                    <div
+                      className="login-btn"
+                      onClick={() => this.showSignupForm()}
+                    >
+                      Sign up
+                    </div>
+                  </>
                 ) : (
                   <div
                     className="login-btn"
                     onClick={() => this.handleLogout()}
                   >
                     Logout
+                    <br /> Signed in as, {localStorage.username}
                   </div>
                 )}
                 {showLoginForm && (
                   <Register
                     show={showLoginForm}
+                    login={"login"}
                     onHide={() => this.showLoginForm()}
+                    toggleForm={() => this.showLoginForm()}
                   />
                 )}
                 {showSignupForm && (
                   <Register
                     show={showSignupForm}
+                    signup={"signup"}
                     onHide={() => this.showSignupForm()}
+                    toggleForm={() => this.showSignupForm()}
                   />
                 )}
               </div>

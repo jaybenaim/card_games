@@ -16,16 +16,37 @@ class Register extends Component {
     this.setState({ password });
   };
   handleSubmit = e => {
+    const { login, signup, toggleForm } = this.props;
     const { username, password } = this.state;
     const data = { username, password };
-    Api.post("users/", data)
-      .then(res => {
-        console.log(res.statusText);
-        // set window.
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (login) {
+      Api.post("authenticate/", data)
+        .then(res => {
+          localStorage.token = res.data.token;
+          localStorage.id = res.data.id;
+          localStorage.username = res.data.username;
+          toggleForm();
+          window.location.reload(true);
+        })
+        .catch(err => {
+          console.log(err);
+          alert("Something went wrong");
+        });
+    }
+    if (signup) {
+      Api.post("users/", data)
+        .then(res => {
+          localStorage.token = res.data.token;
+          localStorage.id = res.data.id;
+          localStorage.username = res.data.username;
+          toggleForm();
+          window.location.reload(true);
+        })
+        .catch(err => {
+          console.log(err);
+          alert("Something went wrong");
+        });
+    }
   };
   render() {
     const { props } = this;
@@ -41,7 +62,10 @@ class Register extends Component {
             <div className="d-flex justify-content-center h-100">
               <div className="card">
                 <div className="card-header">
-                  <h3>Sign In</h3>
+                  <h3>
+                    {props.login === "login" && "Sign in"}
+                    {props.signup === "signup" && "Sign up"}
+                  </h3>
                 </div>
                 <div className="card-body">
                   <form>
@@ -71,23 +95,32 @@ class Register extends Component {
                         onChange={this.handlePassword}
                       />
                     </div>
-                    <div className="row align-items-center remember">
-                      <input type="checkbox" />
-                      Remember Me
-                    </div>
-                    <div className="form-group"></div>
+
+                    <div className=""></div>
                   </form>
+                  <button
+                    className="btn float-right login_btn"
+                    onClick={() => this.handleSubmit()}
+                  >
+                    Submit
+                  </button>
                 </div>
-                <button className="" onClick={() => this.handleSubmit()}>
-                  Submit
-                </button>
+
                 <div className="card-footer">
-                  <div className="d-flex justify-content-center links">
-                    Don't have an account?<a href="#">Sign Up</a>
-                  </div>
-                  <div className="d-flex justify-content-center">
-                    <a href="#">Forgot your password?</a>
-                  </div>
+                  {props.login ? (
+                    <div className="d-flex justify-content-center">
+                      <a href="#">Forgot your password?</a>
+                    </div>
+                  ) : (
+                    <div className="d-flex justify-content-center">
+                      <a
+                        className="login-modal-link"
+                        href="javascript:history.back()"
+                      >
+                        Login
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
