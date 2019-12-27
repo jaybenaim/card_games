@@ -7,14 +7,25 @@
   pointer-events: none;
 }
 .home-nav-link {
-  margin-left: 58%;
-  padding-left: 80px;
+  margin: 0 auto;
 }
+.login-container {
+  display: block;
+  width: 200px;
+}
+.logout-btn {
+  margin-left: -150px;
+}
+.login-btn {
+  margin-left: 30px;
+}
+
 .login-btn {
   float: right;
   color: #007bff;
-  margin-left: 360px;
+  margin-left: 30px;
   font-size: 0.8em !important;
+  margin-left: 140px;
 }
 .signup-btn,
 .logout-btn {
@@ -67,5 +78,27 @@ footer {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 450px) {
+  .App-header nav {
+    float: left;
+    background: transparent;
+    /* transform: rotate(270deg); */
+    margin-left: 0 auto;
+  }
+  .login-container {
+    display: block;
+    width: 200px;
+  }
+  .logout-btn {
+    margin-left: -150px;
+    padding-left: 40px;
+  }
+  .login-btn {
+    margin-left: 30px;
+  }
+  .signup-btn {
+    margin-left: 140px;
   }
 }

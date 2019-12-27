@@ -1,4 +1,4 @@
-.game-table {
+/* .game-table {
   height: 1500px;
   background: rgba(34, 139, 34, 0.5);
   margin-left: -20px;
@@ -52,7 +52,6 @@
     min-width: 750px;
     height: 480px;
     background: #228b22;
-    /* margin: 30% 40px 30% 40px; */
     border: 40px solid rgba(0, 0, 0, 0.9);
     border-radius: 40%;
     zoom: 120%;
@@ -84,4 +83,4 @@
     background: transparent;
     transform: rotate(270deg);
   }
-}
+} */

@@ -5,7 +5,7 @@ import Api from "../assets/api/api";
 class DurakStartScreen extends Component {
   state = {
     gameId: "",
-    players: 1,
+    players: this.props.players,
     score: 0,
     progress: "in-progress"
   };
@@ -19,20 +19,20 @@ class DurakStartScreen extends Component {
     // post to /games
     const { players, score, progress } = this.state;
     const { id, token } = localStorage;
-    console.log(localStorage);
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`
-    };
+
     const data = {
       user: id,
       player_amount: players,
       score: score,
       progress
     };
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Token ${token}`
+    };
     Api.post("games/", data, headers).then(res => {
-      window.location.reload(true);
       this.setState({ gameId: res.data.id });
+      // window.location.reload(true);
     });
   };
   componentDidMount() {}

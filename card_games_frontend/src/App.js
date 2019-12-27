@@ -42,7 +42,7 @@ class App extends React.Component {
               <Link to="/" className="home-nav-link">
                 Home
               </Link>
-              <div>
+              <div className="login-container">
                 {" "}
                 {!isLoggedIn ? (
                   <>
