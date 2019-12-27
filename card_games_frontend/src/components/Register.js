@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "../assets/stylesheets/register.css";
 class Register extends Component {
-  state = {};
+  state = {
+    username: "",
+    password: ""
+  };
+  handleUsername = e => {
+    const username = e.target.value;
+    this.setState({ username });
+  };
+  handlePassword = e => {
+    const password = e.target.value;
+    this.setState({ password });
+  };
   render() {
     const { props } = this;
     return (
@@ -31,6 +42,7 @@ class Register extends Component {
                         type="text"
                         className="form-control"
                         placeholder="username"
+                        onChange={() => this.handleUsername()}
                       />
                     </div>
                     <div className="input-group form-group">
@@ -43,6 +55,7 @@ class Register extends Component {
                         type="password"
                         className="form-control"
                         placeholder="password"
+                        onChange={() => this.handlePassword()}
                       />
                     </div>
                     <div className="row align-items-center remember">
