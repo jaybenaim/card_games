@@ -29,7 +29,14 @@ class Durak extends Component {
     cardsDealt: false,
     wildCardImage: null
   };
-  startGame = () => {};
+  startGame = () => {
+    axios
+      .get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+      .then(res => {
+        const deckId = res.data.deck_id;
+        this.setState({ deckId });
+      });
+  };
 
   dealCards = (cardAmount, player) => {
     const { cardsDealt } = this.state;
@@ -44,19 +51,62 @@ class Durak extends Component {
             )
             .then(res => {
               const cards = res.data.cards;
-              this.setState({ [`seatCards${player}`]: cards, deckId });
+              let cleanedCards = this.cleanCards(cards);
+              this.setState({
+                [`seatCards${player}`]: cleanedCards,
+                deckId
+              });
             });
         });
       });
     this.setState({ cardsDealt: !cardsDealt });
   };
+  cleanCards = cards => {
+    let cleanedCards = cards.map((card, i) => {
+      console.log(card.value);
+      // debugger;
+      if (Number(card.value)) {
+        card.value = Number(card.value);
+        console.log(card.value);
+        // debugger;
+        if (card.value >= 2 && card.value <= 6) {
+          console.log(card.value);
+          // debugger;
+          let newCard = this.drawCard();
+          let c = cards.splice(i, 0, newCard);
+          console.log(c);
+        }
+      }
+    });
+    console.log(cleanedCards);
+
+    return cleanedCards;
+  };
   drawCard = () => {
+    const { deckId } = this.state;
+    let card = [];
+
+    axios
+      .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+      .then(res => {
+        console.log(res.data);
+        card = res.data.cards[0];
+      });
+    return card;
+  };
+  componentDidMount() {
+    this.startGame();
+    setTimeout(() => {
+      let n = this.drawCard();
+      console.log(n);
+    }, 1000);
+  }
+  drawWildCard = () => {
     const { deckId } = this.state;
     axios
       .get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
       .then(res => {
         let image = res.data.cards[0].image;
-        console.log(res.data);
         this.setState({ wildCardImage: image });
       });
   };
@@ -68,14 +118,14 @@ class Durak extends Component {
       case 1:
         // run dealCards fn(6, 1)
         this.dealCards(6, 1);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({ seatClass1: "player1 seat taken" });
         break;
       case 2:
         this.dealCards(6, 1);
         this.dealCards(6, 2);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({
           seatClass1: "player1 seat taken",
@@ -86,7 +136,7 @@ class Durak extends Component {
         this.dealCards(6, 1);
         this.dealCards(6, 2);
         this.dealCards(6, 3);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({
           seatClass1: "player1 seat taken",
@@ -99,7 +149,7 @@ class Durak extends Component {
         this.dealCards(6, 2);
         this.dealCards(6, 3);
         this.dealCards(6, 4);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({
           seatClass1: "player1 seat taken",
@@ -114,7 +164,7 @@ class Durak extends Component {
         this.dealCards(6, 3);
         this.dealCards(6, 4);
         this.dealCards(6, 5);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({
           seatClass1: "player1 seat taken",
@@ -131,7 +181,7 @@ class Durak extends Component {
         this.dealCards(6, 4);
         this.dealCards(6, 5);
         this.dealCards(6, 6);
-        this.drawCard();
+        this.drawWildCard();
 
         this.setState({
           seatClass1: "player1 seat taken",
