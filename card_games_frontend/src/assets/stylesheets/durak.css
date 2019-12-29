@@ -65,7 +65,7 @@
     position: absolute;
   }
   .player4 {
-    margin-left: -90%;
+    margin-left: -100%;
   }
 }
 @media (min-width: 900px) {
@@ -93,10 +93,10 @@
     margin-top: 90%;
   }
   .player3 {
-    margin-top: 90%;
+    margin-top: -90%;
   }
   .player4 {
-    margin-top: 90%;
+    margin-top: -90%;
   }
 
   .wildcard {
@@ -118,10 +118,10 @@
     margin-top: -200%;
   }
   .player3 {
-    margin-top: -200%;
+    margin-top: -130%;
   }
   .player4 {
-    margin-top: -200%;
+    margin-top: -140%;
   }
 }
 @media (max-width: 450px) {

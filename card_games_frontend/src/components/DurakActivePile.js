@@ -4,7 +4,7 @@ import ItemTypes from "./ItemTypes";
 const style = {
   height: "9rem",
   width: "6.5rem",
-  marginLeft: "15%",
+  marginLeft: "25%",
   marginBottom: "1.5rem",
   marginTop: "7.5em",
   color: "white",
