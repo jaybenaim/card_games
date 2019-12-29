@@ -42,14 +42,7 @@
 .player4 {
   grid-area: 3/2;
 }
-.player5 {
-  grid-area: 1/2;
-  margin-top: 14px;
-}
-.player6 {
-  grid-area: 1/4;
-  margin-top: 14px;
-}
+
 .taken {
   background: url(../images/p1Back.jpg) !important;
   background-size: cover !important;
@@ -99,12 +92,7 @@
   .player4 {
     margin-top: 90%;
   }
-  .player5 {
-    margin-top: -50px;
-  }
-  .player6 {
-    margin-top: -50px;
-  }
+
   .wildcard {
     width: 5em !important;
     height: 7em !important;
