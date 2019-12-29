@@ -6,7 +6,14 @@ import { Button, ButtonToolbar, Modal, Form } from "react-bootstrap";
 import Api from "../assets/api/api";
 import DrawFromInternalDeck from "../assets/javascripts/durak";
 import DurakHand from "./DurakHand";
+import { DndProvider } from "react-dnd";
+import Backend from "react-dnd-html5-backend";
+import DurakActivePile from "./DurakActivePile";
 class Durak extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.removeCard = this.removeCard.bind(this);
+  // }
   state = {
     showStartGameScreen: false,
     playerName: null,
@@ -130,11 +137,24 @@ class Durak extends Component {
       this.setState({ gameId: res.data.id });
       this.checkPlayers();
     });
+
     this.showStartScreen();
+  };
+  checkCardAmount = () => {};
+
+  removeCard = cardPosition => {
+    const { seatCards2 } = this.state;
+    seatCards2.splice(cardPosition, 1);
+    let updatedCards = seatCards2;
+
+    this.setState({ seatCards2: updatedCards });
+    this.forceUpdate();
   };
   componentDidMount() {
     this.startGame();
   }
+  componentDidUpdate() {}
+
   render() {
     const {
       showStartGameScreen,
@@ -150,7 +170,11 @@ class Durak extends Component {
     } = this.state;
 
     const playerHand = seatCards2.map((card, i) => {
-      return <DurakHand key={i} id={i} {...card} />;
+      return (
+        <DndProvider backend={Backend}>
+          <DurakHand key={i} id={i} {...card} removeCard={this.removeCard} />
+        </DndProvider>
+      );
     });
     return (
       <>
@@ -206,6 +230,14 @@ class Durak extends Component {
                   <div className={seatClass1}></div>
                   <div className={seatClass2}>{seatCards2 && playerHand}</div>
                   <div className={seatClass3}></div>
+                  <div className={seatClass4}></div>
+                  <div className="active-pile">
+                    {cardsDealt && (
+                      <DndProvider backend={Backend}>
+                        <DurakActivePile />
+                      </DndProvider>
+                    )}
+                  </div>
                   {cardsDealt && (
                     <div className="pile taken" onClick={() => this.drawCard()}>
                       <img
@@ -215,8 +247,6 @@ class Durak extends Component {
                       />
                     </div>
                   )}
-
-                  <div className={seatClass4}></div>
                 </div>
               </div>
             </div>
