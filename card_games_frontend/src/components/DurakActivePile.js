@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { useDrop } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 const style = {
-  height: "14rem",
-  width: "10rem",
-  //   marginRight: "1.5rem",
-  //   marginBottom: "1.5rem",
-  //   color: "white",
+  height: "9rem",
+  width: "6.5rem",
+  marginLeft: "15%",
+  marginBottom: "1.5rem",
+  marginTop: "7.5em",
+  color: "white",
   padding: "1rem",
   textAlign: "center",
-  fontSize: "1rem"
-  //   lineHeight: "normal",
-  //   float: "left"
+  fontSize: "1rem",
+  lineHeight: "normal",
+  float: "left",
+  position: "absolute",
+  border: "2px dashed black"
 };
 const DurackActivePile = () => {
   const [{ canDrop, isOver }, drop] = useDrop({
@@ -23,7 +26,7 @@ const DurackActivePile = () => {
     })
   });
   const isActive = canDrop && isOver;
-  let backgroundColor = "#222";
+  let backgroundColor = "transparent";
   if (isActive) {
     // check card if valid
     backgroundColor = "darkgreen";
@@ -33,6 +36,7 @@ const DurackActivePile = () => {
   }
   return (
     <div ref={drop} style={{ ...style, backgroundColor }}>
+      {/* insert grid  */}
       {isActive ? "Release to drop" : "Drag a card here"}
     </div>
   );

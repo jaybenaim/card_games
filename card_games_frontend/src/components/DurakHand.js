@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import "../assets/stylesheets/durakHand.css";
 import { useDrag } from "react-dnd";
-// import { ItemTypes } from "./Constants";
 import ItemTypes from "./ItemTypes";
 const style = {
-  //   border: "1px dashed gray",
-  //   backgroundColor: "white",
-  //   padding: "0.5rem 1rem",
-  //   marginRight: "1.5rem",
-  //   marginBottom: "1.5rem",
   cursor: "move"
-  //   float: "left"
 };
 const DurakHand = ({ name, image, suit, rank, id, removeCard }) => {
   const [cardAmount, setCardAmount] = useState(6);
@@ -24,7 +17,7 @@ const DurakHand = ({ name, image, suit, rank, id, removeCard }) => {
       if (item && dropResult) {
         setCardAmount(cardAmount - 1);
         removeCard(id);
-        alert(`You dropped ${rank} into ${dropResult.name}!`);
+        alert(`You dropped ${rank} into ${dropResult}!`);
       }
     },
     collect: monitor => ({

@@ -35,6 +35,9 @@
 .player2 {
   grid-area: 3/3;
   margin-top: 50px;
+  transform: rotate(90deg);
+  width: 138px;
+  height: 90px;
 }
 .player3 {
   grid-area: 3/4;
@@ -60,6 +63,9 @@
     border: 40px solid rgba(0, 0, 0, 0.9);
     border-radius: 40%;
     position: absolute;
+  }
+  .player4 {
+    margin-left: -90%;
   }
 }
 @media (min-width: 900px) {
@@ -101,6 +107,7 @@
 @media (max-width: 750px) {
   .center-table {
     max-width: 500px !important;
+    height: 600px !important;
     background: #228b22;
     margin: 30% 40px 30% 40px;
     border: 40px solid rgba(0, 0, 0, 0.9);

@@ -75,7 +75,7 @@ class Durak extends Component {
 
         this.setState({
           seatClass1: "player1 seat taken",
-          seatClass2: "player2 seat taken"
+          seatClass2: "player2 seat "
         });
         break;
       case 3:
@@ -86,7 +86,7 @@ class Durak extends Component {
 
         this.setState({
           seatClass1: "player1 seat taken",
-          seatClass2: "player2 seat taken",
+          seatClass2: "player2 seat ",
           seatClass3: "player3 seat taken"
         });
         break;
@@ -99,7 +99,7 @@ class Durak extends Component {
 
         this.setState({
           seatClass1: "player1 seat taken",
-          seatClass2: "player2 seat taken",
+          seatClass2: "player2 seat ",
           seatClass3: "player3 seat taken",
           seatClass4: "player4 seat taken"
         });
