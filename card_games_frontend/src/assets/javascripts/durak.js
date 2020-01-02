@@ -32,7 +32,12 @@ function buildCards() {
       }
       let image = `https://deckofcardsapi.com/static/img/${cleanRank}${cleanSuit}.png`;
 
-      deck.push({ suit: suit[i], rank: rank[j], image });
+      deck.push({
+        id: rank[j][0] + suit[i][0],
+        suit: suit[i],
+        rank: rank[j],
+        image
+      });
     }
   }
   function shuffle(cards) {

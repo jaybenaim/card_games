@@ -155,6 +155,10 @@ class Durak extends Component {
   checkCardAmount = () => {};
 
   playFirstCard = (cardPosition, player) => {
+    //////// gget id from card "7H" created in durak.js
+    alert("it worked s");
+    debugger;
+
     const { seatCards2, wildCard, activePileCards } = this.state;
     const activeCard = seatCards2.splice(cardPosition, 1);
     const { suit, rank, image } = activeCard[0];
@@ -293,6 +297,7 @@ class Durak extends Component {
                         <Example
                           seatCards2={seatCards2}
                           activePileCards={activePileCards}
+                          playFirstCard={this.playFirstCard}
                         />
                       </DndProvider>
                     )}

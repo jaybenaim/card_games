@@ -1,7 +1,11 @@
 import React, { useState, useCallback } from "react";
 import Container from "./Container";
 import CustomDragLayer from "./CustomDragLayer";
-const DragAroundCustomDragLayer = ({ activePileCards, seatCards2 }) => {
+const DragAroundCustomDragLayer = ({
+  activePileCards,
+  seatCards2,
+  playFirstCard
+}) => {
   const [snapToGridAfterDrop, setSnapToGridAfterDrop] = useState(false);
   const [snapToGridWhileDragging, setSnapToGridWhileDragging] = useState(false);
   const handleSnapToGridAfterDropChange = useCallback(() => {
@@ -16,6 +20,7 @@ const DragAroundCustomDragLayer = ({ activePileCards, seatCards2 }) => {
         snapToGrid={snapToGridAfterDrop}
         activePileCards={activePileCards}
         seatCards2={seatCards2}
+        playFirstCard={playFirstCard}
       />
       <CustomDragLayer
         snapToGrid={snapToGridWhileDragging}

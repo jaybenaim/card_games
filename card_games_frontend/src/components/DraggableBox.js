@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import { getEmptyImage } from "react-dnd-html5-backend";
@@ -17,13 +17,34 @@ function getStyles(left, top, isDragging) {
   };
 }
 const DraggableBox = props => {
-  const { id, title, left, top, activePileCards, seatCards2 } = props;
+  const [cardAmount, setCardAmount] = useState(6);
+
+  const {
+    id,
+    title,
+    left,
+    top,
+    activePileCards,
+    seatCards2,
+    playFirstCard
+  } = props;
   const [{ isDragging }, drag, preview] = useDrag({
     item: { type: ItemTypes.BOX, id, left, top, title },
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+
+      if (item && dropResult) {
+        setCardAmount(cardAmount - 1);
+        playFirstCard(id);
+      }
+    },
     collect: monitor => ({
       isDragging: monitor.isDragging()
     })
   });
+  /// insert here drop from Durak
+  // playFirstCard(id);
+  ///
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
   }, []);

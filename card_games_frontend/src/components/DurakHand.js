@@ -30,7 +30,7 @@ const DurakHand = ({
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
 
-      if (item && dropResult) {
+      if (isDragging) {
         setCardAmount(cardAmount - 1);
         playFirstCard(id);
       }

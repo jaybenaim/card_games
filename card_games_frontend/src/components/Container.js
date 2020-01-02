@@ -10,10 +10,13 @@ const styles = {
   //   border: "1px solid black",
   position: "relative"
 };
-function renderBox(item, key) {
-  return <DraggableBox key={key} id={key} {...item} />;
-}
-const Container = ({ snapToGrid, activePileCards, seatCards2 }) => {
+
+const Container = ({
+  snapToGrid,
+  activePileCards,
+  seatCards2,
+  playFirstCard
+}) => {
   const [boxes, setBoxes] = useState({
     1: { top: 500, left: 100, seatCards2: seatCards2[0] },
     2: { top: 500, left: 160, seatCards2: seatCards2[1] },
@@ -45,9 +48,20 @@ const Container = ({ snapToGrid, activePileCards, seatCards2 }) => {
         [left, top] = doSnapToGrid(left, top);
       }
       moveBox(item.id, left, top);
+
       return undefined;
     }
   });
+  const renderBox = (item, key) => {
+    return (
+      <DraggableBox
+        key={key}
+        id={key}
+        {...item}
+        playFirstCard={playFirstCard}
+      />
+    );
+  };
   return (
     <div ref={drop} style={styles}>
       {Object.keys(boxes).map(key => renderBox(boxes[key], key))}
