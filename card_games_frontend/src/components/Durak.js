@@ -5,14 +5,18 @@ import DurakStartScreen from "./DurakStartScreen";
 import { Button, ButtonToolbar, Modal, Form } from "react-bootstrap";
 import Api from "../assets/api/api";
 import DrawFromInternalDeck from "../assets/javascripts/durak";
+import getRankToNumber from "../assets/javascripts/getRankToNum";
 import DurakHand from "./DurakHand";
 import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
 import DurakActivePile from "./DurakActivePile";
+import Example from "./Example";
+import DraggableBox from "./DraggableBox";
+
 class Durak extends Component {
   // constructor(props) {
   //   super(props);
-  //   this.removeCard = this.removeCard.bind(this);
+  //   this.playFirstCard = this.playFirstCard.bind(this);
   // }
   state = {
     showStartGameScreen: false,
@@ -31,8 +35,18 @@ class Durak extends Component {
     seatCards3: [],
     seatCards4: [],
     cardsDealt: false,
-    wildCardImage: null,
-    drawnCard: []
+    wildCard: null,
+    drawnCard: [],
+    activePileCards: [
+      {
+        spot1: { suit: "", rank: "", image: "" },
+        spot2: { suit: "", rank: "", image: "" },
+        spot3: { suit: "", rank: "", image: "" },
+        spot4: { suit: "", rank: "", image: "" },
+        spot5: { suit: "", rank: "", image: "" },
+        spot6: { suit: "", rank: "", image: "" }
+      }
+    ]
   };
   startGame = () => {
     this.shuffleCards();
@@ -50,11 +64,13 @@ class Durak extends Component {
     });
     this.setState({ cardsDealt: !cardsDealt });
   };
-
+  drawCard = amount => {
+    return DrawFromInternalDeck.draw(amount);
+  };
   drawWildCard = () => {
     let card = DrawFromInternalDeck.draw(1);
-    let image = card[0].image;
-    this.setState({ wildCardImage: image });
+
+    this.setState({ wildCard: card[0] });
   };
   checkPlayers = () => {
     let { gameId, players } = this.state;
@@ -62,17 +78,14 @@ class Durak extends Component {
 
     switch (players) {
       case 1:
-        // run dealCards fn(6, 1)
         this.dealCards(6, 1);
         this.drawWildCard();
-
         this.setState({ seatClass1: "player1 seat taken" });
         break;
       case 2:
         this.dealCards(6, 1);
         this.dealCards(6, 2);
         this.drawWildCard();
-
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat "
@@ -83,7 +96,6 @@ class Durak extends Component {
         this.dealCards(6, 2);
         this.dealCards(6, 3);
         this.drawWildCard();
-
         this.setState({
           seatClass1: "player1 seat taken",
           seatClass2: "player2 seat ",
@@ -142,14 +154,44 @@ class Durak extends Component {
   };
   checkCardAmount = () => {};
 
-  removeCard = cardPosition => {
-    const { seatCards2 } = this.state;
-    seatCards2.splice(cardPosition, 1);
+  playFirstCard = (cardPosition, player) => {
+    const { seatCards2, wildCard, activePileCards } = this.state;
+    const activeCard = seatCards2.splice(cardPosition, 1);
+    const { suit, rank, image } = activeCard[0];
     let updatedCards = seatCards2;
 
-    this.setState({ seatCards2: updatedCards });
+    if (suit === wildCard.suit || rank === wildCard.rank) {
+      // let rankNum = getRankToNumber(rank)
+      // let wildNum = getRankToNumber(wildCard.rank); insert prev card check here
+      // if (rankNum > prevRank)
+
+      activePileCards[0][`spot1`].suit = suit;
+      activePileCards[0][`spot1`].rank = rank;
+      activePileCards[0][`spot1`].image = image;
+
+      this.setState({
+        activePileCards: activePileCards,
+        seatCards2: updatedCards,
+        activeCard
+      });
+      this.forceUpdate();
+    } else {
+      updatedCards.push(activeCard[0]);
+      alert(
+        "Cannot play that card. Must be a " +
+          wildCard.suit +
+          " or " +
+          wildCard.rank
+      );
+    }
+    this.setState({
+      seatCards2: updatedCards,
+      activeCard
+    });
+
     this.forceUpdate();
   };
+
   componentDidMount() {
     this.startGame();
   }
@@ -166,13 +208,22 @@ class Durak extends Component {
       seatClass4,
       seatCards2,
       cardsDealt,
-      wildCardImage
+      wildCard,
+      activePileCards,
+      activeCard
     } = this.state;
 
     const playerHand = seatCards2.map((card, i) => {
       return (
         <DndProvider backend={Backend}>
-          <DurakHand key={i} id={i} {...card} removeCard={this.removeCard} />
+          <DurakHand
+            key={i}
+            id={i}
+            {...card}
+            card={card}
+            playFirstCard={this.playFirstCard}
+            wildCard={wildCard}
+          />
         </DndProvider>
       );
     });
@@ -234,17 +285,30 @@ class Durak extends Component {
                   <div className="active-pile">
                     {cardsDealt && (
                       <DndProvider backend={Backend}>
-                        <DurakActivePile />
+                        <DurakActivePile
+                          wildCard={wildCard}
+                          activePileCards={activePileCards}
+                          card={activeCard}
+                        />
+                        <Example
+                          seatCards2={seatCards2}
+                          activePileCards={activePileCards}
+                        />
                       </DndProvider>
                     )}
                   </div>
                   {cardsDealt && (
-                    <div className="pile taken" onClick={() => this.drawCard()}>
-                      <img
-                        src={wildCardImage}
-                        className="wildcard"
-                        alt="wildcard"
-                      />
+                    <div
+                      className="pile taken"
+                      onClick={() => this.drawCard(1)}
+                    >
+                      {wildCard && (
+                        <img
+                          src={wildCard.image}
+                          className="wildcard"
+                          alt="wildcard"
+                        />
+                      )}
                     </div>
                   )}
                 </div>
