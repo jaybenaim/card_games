@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../assets/stylesheets/durak.css";
+import "../../../assets/stylesheets/durak.css";
 import DurakStartScreen from "./DurakStartScreen";
 import { Button, ButtonToolbar, Modal, Form } from "react-bootstrap";
-import Api from "../assets/api/api";
-import DrawFromInternalDeck from "../assets/javascripts/durak";
-import getRankToNumber from "../assets/javascripts/getRankToNum";
+import Api from "../../../assets/api/api";
+import DrawFromInternalDeck from "../../../assets/javascripts/durak";
+import getRankToNumber from "../../../assets/javascripts/getRankToNum";
 import DurakHand from "./DurakHand";
 import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
 import DurakActivePile from "./DurakActivePile";
-import Example from "./Example";
-import DraggableBox from "./DraggableBox";
+import Example from "../PlayZone/Example";
+import DraggableBox from "../PlayZone/DraggableBox";
 
 class Durak extends Component {
   // constructor(props) {
@@ -156,8 +156,6 @@ class Durak extends Component {
 
   playFirstCard = (cardPosition, player) => {
     //////// gget id from card "7H" created in durak.js
-    alert("it worked s");
-    debugger;
 
     const { seatCards2, wildCard, activePileCards } = this.state;
     const activeCard = seatCards2.splice(cardPosition, 1);

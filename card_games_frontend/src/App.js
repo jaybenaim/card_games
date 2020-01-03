@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import War from "./components/War";
-import Durak from "./components/Durak";
+import Durak from "./components/Durak/Table/Durak";
 import Poker from "./components/Poker";
 import Register from "./components/Register";
 

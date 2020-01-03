@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDrop } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import DraggableBox from "./DraggableBox";
-import doSnapToGrid from "../assets/javascripts/snapToGrid";
+import doSnapToGrid from "../../../assets/javascripts/snapToGrid";
 import update from "immutability-helper";
 const styles = {
   width: 900,

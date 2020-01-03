@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/stylesheets/box.css";
+import "../../../assets/stylesheets/box.css";
 const styles = {
   cursor: "move"
 };

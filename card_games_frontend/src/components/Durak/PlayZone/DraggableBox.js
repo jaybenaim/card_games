@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import Box from "./Box";
-import DurakHand from "./DurakHand";
+import DurakHand from "../Table/DurakHand";
 function getStyles(left, top, isDragging) {
   const transform = `translate3d(${left}px, ${top}px, 0)`;
   return {
@@ -33,7 +33,7 @@ const DraggableBox = props => {
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
 
-      if (item && dropResult) {
+      if (isDragging) {
         setCardAmount(cardAmount - 1);
         playFirstCard(id);
       }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
-import ItemTypes from "./ItemTypes";
+import ItemTypes from "../PlayZone/ItemTypes";
 
 const style = {
   height: "9rem",

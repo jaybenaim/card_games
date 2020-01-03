@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../assets/stylesheets/war.css";
-import cards from "../assets/javascripts/war.js";
+import "../../assets/stylesheets/war.css";
+import cards from "../../assets/javascripts/war";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import Scoreboard from "./Scoreboard";
