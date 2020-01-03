@@ -158,7 +158,7 @@ class Durak extends Component {
     //////// gget id from card "7H" created in durak.js
 
     const { seatCards2, wildCard, activePileCards } = this.state;
-    const activeCard = seatCards2.splice(cardPosition, 1);
+    const activeCard = seatCards2.splice(cardPosition - 1, 1);
     const { suit, rank, image } = activeCard[0];
     let updatedCards = seatCards2;
 
